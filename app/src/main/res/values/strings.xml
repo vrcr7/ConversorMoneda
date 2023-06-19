@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">ConversorModena</string>
+
+
+
+
+<string-array name="divisa">
+    <item>DOLAR</item>
+    <item>EURO</item>
+</string-array>
+</resources>
