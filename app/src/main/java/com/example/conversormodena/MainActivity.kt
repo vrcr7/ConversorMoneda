@@ -20,23 +20,19 @@ class MainActivity : AppCompatActivity() {
     lateinit var  total:TextView
     lateinit var eudol:String
     lateinit var monto:EditText
-
+    lateinit var spinner: Spinner
     lateinit var  binding: ActivityMainBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-
-
         convert = binding.convert
         reset= binding.reset
         total = binding.total
         monto = binding.saldo
 
-
-
-        val spinner: Spinner = binding.spinner
+        spinner = binding.spinner
         // Create an ArrayAdapter using the string array and a default spinner layout
         ArrayAdapter.createFromResource(this,R.array.divisa,
             android.R.layout.simple_spinner_item).also { adapter ->
@@ -50,7 +46,6 @@ class MainActivity : AppCompatActivity() {
                 override fun onItemSelected(parent: AdapterView<*>, view: View?, position: Int, id: Long) {
                     var selectedValue = parent.getItemAtPosition(position) as String
                     eudol = selectedValue
-
                 }
 
                 override fun onNothingSelected(parent: AdapterView<*>) {
@@ -65,12 +60,12 @@ class MainActivity : AppCompatActivity() {
                         if (eudol == "DOLAR") {
                             var montoNumerico = monto.text.toString().toDouble()
                             montoNumerico *= 800
-                            total.text = "$montoNumerico Dolares"
+                            total.text = "$montoNumerico pesos en Dolares"
                         }
                         if (eudol == "EURO") {
                             var montoNumerico = monto.text.toString().toDouble()
                             montoNumerico *= 900
-                            total.text = "$montoNumerico Euros"
+                            total.text = "$montoNumerico pesos en Euros"
                         }
                     } catch (e: NumberFormatException) {
                         total.text = "Error de conversión"
